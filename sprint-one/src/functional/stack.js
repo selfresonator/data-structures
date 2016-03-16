@@ -11,12 +11,12 @@ var Stack = function(){
   };
 
   someInstance.pop = function(){
-    console.log('count outside while', count)
+    // console.log('count outside while', count)
     while (count > 0) {
-      console.log('count inside while',count)
+      // console.log('count inside while',count)
       var deletedVal = storage[count-1];
       delete storage[count];
-      console.log('deleted val:', deletedVal);
+      // console.log('deleted val:', deletedVal);
       count--;
       return deletedVal;
     }

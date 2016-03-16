@@ -4,7 +4,6 @@ var Queue = function(){
   // Use an object with numeric keys to store values
   var storage = {};
   var count = 0;
-  var indexLength = hiIndex-lowIndex;
   var hiIndex = 0;
   var lowIndex = 0;
 
@@ -24,8 +23,8 @@ var Queue = function(){
   someInstance.dequeue = function(){
     if (count > 0) {
       var deletedVal = storage[hiIndex-1];
-      console.log(deletedVal)
-      console.log('hiIndex is:', hiIndex)
+      // console.log(deletedVal)
+      // console.log('hiIndex is:', hiIndex)
       delete storage[hiIndex];
       count--;
       hiIndex--;
