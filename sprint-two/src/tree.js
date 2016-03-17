@@ -1,24 +1,31 @@
 var Tree = function(value){
   var newTree = {};
-  console.log("inside Tree",value);
   newTree.value = value;
+  // newTree.childnode = {};
+  // newTree.parentnode = {};
   // storage holding nodes
-  newTree.node = {};
-  _.extend(newTree,treeMethods);
   newTree.children = [];
-  console.log(newTree.children)
+  _.extend(newTree,treeMethods);
   return newTree;
 };
 
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
-  console.log('inside tree.addchild', value)
-  this.children[0] = value
+  var child = Tree(value);
+  console.log(child);
+  this.children.push(child);
+  return this.value;
 };
 
 treeMethods.contains = function(target){
-
+  var found = false;
+  _.each(this.children, function(item, index, collection) {
+    _.each(item, function(val, key, collection) {
+      target === val ? found = true : found = false;
+    });
+  });
+  return found;
 };
 
 
