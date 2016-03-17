@@ -5,7 +5,7 @@ var Stack = function() {
   obj.storage = {};
   obj.count = 0;
   _.extend(obj, stackMethods);
-  console.log(obj);
+  // console.log(obj);
   return obj;
 };
 

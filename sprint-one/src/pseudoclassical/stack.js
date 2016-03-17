@@ -1,22 +1,18 @@
 var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  var stack = Object.create(stackMethods);
-  stack.storage = {};
-  stack.count = 0;
-  // console.log(stack)
-  return stack;
+  Stack.prototype.contructor = Stack;
+  this.storage = {};
+  this.count = 0;
 };
 
-var stackMethods = {};
-
-stackMethods.push = function(value) {
+Stack.prototype.push = function(value) {
   this.storage[this.count] = value;
   this.count++;
 };
 
-stackMethods.pop = function() {
-  while (this.count > 0) {
+Stack.prototype.pop = function() {
+  if (this.count > 0) {
     var deletedVal = this.storage[this.count-1];
     delete this.storage[this.count];
     this.count--;
@@ -24,6 +20,6 @@ stackMethods.pop = function() {
   }
 };
 
-stackMethods.size = function() {
+Stack.prototype.size = function() {
   return this.count;
 };

@@ -1,39 +1,37 @@
 var Queue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  var queue = Object.create(queueMethods);
-  queue.hiIndex = 0;
-  queue.loIndex = 0;
-  queue.storage = {};
-  queue.count = 0;
-  return queue;
+  Queue.prototype.constructor = Queue;
+
+  this.loIndex = 0;
+  this.hiIndex = 0;
+  this.count = 0;
+  this.storage = {};
 };
 
-var queueMethods = {};
-
-queueMethods.enqueue = function(value) {
+Queue.prototype.enqueue = function(value){
   if (this.storage[this.loIndex]) {
     this.storage[this.loIndex+1] = this.storage[this.loIndex];
     this.storage[this.loIndex] = value;
-    this.count++;
     this.hiIndex++;
+    this.count++;
   } else {
     this.storage[this.loIndex] = value;
-    this.count++;
     this.hiIndex++;
+    this.count++;
   }
 };
 
-queueMethods.dequeue = function() {
+Queue.prototype.dequeue = function(){
   if (this.count > 0) {
     var deletedVal = this.storage[this.hiIndex-1];
     delete this.storage[this.hiIndex];
-    this.count--;
     this.hiIndex--;
+    this.count--;
     return deletedVal;
   }
 };
 
-queueMethods.size = function() {
+Queue.prototype.size = function(){
   return this.count;
 };
