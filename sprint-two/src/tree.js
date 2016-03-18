@@ -27,12 +27,13 @@ treeMethods.contains = function(target){
 
   _.each(nodeToSearch, function(item, index, collection) {
     console.log(item);
+    console.log('target inside each', target);
     if (target === item.value){
-      console.log(item)
+      console.log(item);
       found = true;
     } else {
       console.log("we in here!!")
-      console.log("this is the node's children", item.children)
+      console.log("this is the node's children", item.children);
       item.contains(target);
     }
   });
