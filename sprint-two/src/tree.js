@@ -13,17 +13,28 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value){
   var child = Tree(value);
-  console.log(child);
+  // console.log(child);
   this.children.push(child);
   return this.value;
 };
 
 treeMethods.contains = function(target){
   var found = false;
-  _.each(this.children, function(item, index, collection) {
-    _.each(item, function(val, key, collection) {
-      target === val ? found = true : found = false;
-    });
+  var nodeToSearch = this.children;
+  if (nodeToSearch.length === 0){
+    return;
+  }
+
+  _.each(nodeToSearch, function(item, index, collection) {
+    console.log(item);
+    if (target === item.value){
+      console.log(item)
+      found = true;
+    } else {
+      console.log("we in here!!")
+      console.log("this is the node's children", item.children)
+      item.contains(target);
+    }
   });
   return found;
 };
