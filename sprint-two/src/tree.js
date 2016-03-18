@@ -24,7 +24,11 @@ treeMethods.contains = function(target){
   if (nodeToSearch.length === 0){
     return;
   }
-
+// so depth first instead of breadth, we have been doing the right thing in
+// the wrong order in our code. we want to explore the children of a node
+// before we inspect the sibling nodes. so we need another function(saved as a
+// variable and called) to make this tree search work, so we are moving through
+ // the children of a node first we move on to the next node, i.e. getElementsBy...
   _.each(nodeToSearch, function(item, index, collection) {
     console.log(item);
     console.log('target inside each', target);
