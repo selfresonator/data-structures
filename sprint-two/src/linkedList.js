@@ -6,13 +6,6 @@ var LinkedList = function(){
   list.addToTail = function(value){
     var newNode = Node();
     newNode.value = value;
-    // console.log(value)
-    // newNode.value = value;
-    // console.log(newNode)
-    // check if list has has any nodes
-      // if so new node has list.head && list.tail = true;
-    // else if currentnode has head and tail, then list.tail = null 
-      // the new node added will have list.head = null list.tail = true;
     if (!list.head) {
       list.head = newNode;
       list.tail = newNode;
@@ -24,12 +17,6 @@ var LinkedList = function(){
   };
 
   list.removeHead = function(){
-    // if the list.node has list.head = true, 
-    // assign the head node to a variable
-    // find list.node.next and put list.
-    // when we have the value of the nextnode we reassign nextnodes list.head = true
-    // delete the node
-    // return deleted
     var currentNode = list.head;
     var nextnode = list.head.next;
     if (list.head) {
