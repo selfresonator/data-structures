@@ -20,29 +20,44 @@ treeMethods.addChild = function(value){
 
 treeMethods.contains = function(target){
   var found = false;
-  var nodeToSearch = this.children;
-  if (nodeToSearch.length === 0){
-    return;
-  }
-// so depth first instead of breadth, we have been doing the right thing in
-// the wrong order in our code. we want to explore the children of a node
-// before we inspect the sibling nodes. so we need another function(saved as a
-// variable and called) to make this tree search work, so we are moving through
- // the children of a node first we move on to the next node, i.e. getElementsBy...
-  _.each(nodeToSearch, function(item, index, collection) {
-    console.log(item);
-    console.log('target inside each', target);
-    if (target === item.value){
-      console.log(item);
-      found = true;
-    } else {
-      console.log("we in here!!")
-      console.log("this is the node's children", item.children);
-      item.contains(target);
+
+  var searchNode = function(nodeList, target){
+    nodeList = nodeList || this.children
+
+
+    if(nodeList.length === 0){
+      return;
     }
-  });
+
+    for(var i = 0; i < nodeList.length; i++){
+      var childNode = nodeList[i]
+        console.log('children before if', childNode.children)
+      if(childNode.value === target){
+        found = true;
+        console.log(childNode.children)
+        return;
+      } else {
+        console.log('children in recursion', childNode.children)       
+        searchNode(childNode.children, target)    
+      }
+    }
+  };
+  searchNode(this.children, target);
+
   return found;
 };
+  // _.each(nodeToSearch, function(item, index, collection) {
+  //   console.log(item);
+  //   console.log('target inside each', target);
+  //   if (target === item.value){
+  //     console.log(item);
+  //     found = true;
+  //   } else {
+  //     console.log("we in here!!")
+  //     console.log("this is the node's children", item.children);
+  //     item.contains(target);
+  //   }
+  // });
 
 
 /*

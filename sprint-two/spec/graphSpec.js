@@ -49,6 +49,8 @@ describe('graph', function() {
     var connectToSatsumas = function(item) {
       graph.addEdge(item, 'satsumas');
     };
+    // connectToSatsumas('tomato');
+    // console.log(graph.edge)
     graph.addNode('satsumas');
     graph.addNode('puppies');
     graph.addNode('kittens');
@@ -57,6 +59,6 @@ describe('graph', function() {
     expect(graph.hasEdge('puppies', 'satsumas')).to.equal(true);
     expect(graph.hasEdge('kittens', 'satsumas')).to.equal(true);
     expect(graph.hasEdge('penguins', 'satsumas')).to.equal(true);
-    expect(graph.hasEdge('satsumas', 'satsumas')).to.equal(true);
+    expect(graph.hasEdge('satsumas', 'satsumas')).to.equal(false);
   });
 });
