@@ -15,13 +15,11 @@ queueMethods.enqueue = function(value) {
   if (this.storage[this.loIndex]) {
     this.storage[this.loIndex+1] = this.storage[this.loIndex];
     this.storage[this.loIndex] = value;
-    this.count++;
-    this.hiIndex++;
   } else {
     this.storage[this.loIndex] = value;
-    this.count++;
-    this.hiIndex++;
   }
+  this.count++;
+  this.hiIndex++;
 };
 
 queueMethods.dequeue = function() {

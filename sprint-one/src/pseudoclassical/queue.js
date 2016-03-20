@@ -2,7 +2,6 @@ var Queue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
   Queue.prototype.constructor = Queue;
-
   this.loIndex = 0;
   this.hiIndex = 0;
   this.count = 0;
@@ -13,13 +12,11 @@ Queue.prototype.enqueue = function(value){
   if (this.storage[this.loIndex]) {
     this.storage[this.loIndex+1] = this.storage[this.loIndex];
     this.storage[this.loIndex] = value;
-    this.hiIndex++;
-    this.count++;
   } else {
     this.storage[this.loIndex] = value;
-    this.hiIndex++;
-    this.count++;
   }
+  this.hiIndex++;
+  this.count++;
 };
 
 Queue.prototype.dequeue = function(){

@@ -23,8 +23,6 @@ var Queue = function(){
   someInstance.dequeue = function(){
     if (count > 0) {
       var deletedVal = storage[hiIndex-1];
-      // console.log(deletedVal)
-      // console.log('hiIndex is:', hiIndex)
       delete storage[hiIndex];
       count--;
       hiIndex--;

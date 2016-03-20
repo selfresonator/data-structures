@@ -4,7 +4,6 @@ var Stack = function() {
   var stack = Object.create(stackMethods);
   stack.storage = {};
   stack.count = 0;
-  // console.log(stack)
   return stack;
 };
 
