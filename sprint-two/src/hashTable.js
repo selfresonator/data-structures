@@ -6,7 +6,6 @@ var HashTable = function(){
 HashTable.prototype.insert = function(key, value){
   var i = getIndexBelowMaxForKey(key, this._limit);
   var bucket = this._storage.get(i);
-  console.log(bucket);
   if (bucket === undefined) {
     this._storage.set(i, [[key,value]]);
   } else if (_.contains(bucket, key)) {
