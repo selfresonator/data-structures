@@ -12,34 +12,43 @@ var BinarySearchTree = function(value){
 var binaryTreeMethods = {};
 
 binaryTreeMethods.insert = function(val) {
-  // so check left and check right. set an instance of BinarySearchTree
-  // the either prop, depending on the value.
-  // console.log('value: ', val);
-  // console.log('this.right: ', this.value)
   if (val === this.value) {
     return;
   } else if (val > this.value) {
-    console.log('value in first if: ', val);
     if (this.right === undefined) {
       this.right = BinarySearchTree(val);
     } else {
-      console.log('Right tree: ', BinarySearchTree(val))
       this.right.insert(val);
     }
   } else if (val < this.value) {
-    console.log('value in else: ', val);
     if (this.left === undefined) {
-      // console.log(this.left)
       this.left = BinarySearchTree(val);
     } else {
-      console.log('left Tree: ', BinarySearchTree(val))
       this.left.insert(val);
     }
   }
 };
 
 binaryTreeMethods.contains = function(value) {
+  var found = false;
 
+  var searchTree = function(tree, value) {
+    var tree  = tree || this;
+    console.log('tree in search tree: ', tree)
+    if (tree.value === value) {
+      found = true;
+      return;
+    } else if (value < tree.value) {
+      // the left values are smaller. keep seaching if its not found
+      searchTree(tree.left);
+    } else {
+      searchTree(tree.right);
+    }
+  };
+
+  searchTree(this, value);
+
+  return found
 };
 
 binaryTreeMethods.depthFirstLog = function(callback) {

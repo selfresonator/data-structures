@@ -1,4 +1,4 @@
-var Tree = function(value){
+var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
   newTree.children = [];
@@ -25,7 +25,7 @@ treeMethods.contains = function(target){
     }
 
     for(var i = 0; i < nodeList.length; i++) {
-      var childNode = nodeList[i]
+      var childNode = nodeList[i];
       if(childNode.value === target) {
         found = true;
         return;
