@@ -3,7 +3,7 @@ describe('binarySearchTree', function() {
 
   beforeEach(function() {
     binarySearchTree = BinarySearchTree(5);
-    console.log('Genesis Binary Test Tree: ', binarySearchTree);
+    // console.log('Genesis Binary Test Tree: ', binarySearchTree);
   });
 
   it('should have methods named "insert", "contains", and "depthFirstLog"', function() {
