@@ -5,39 +5,41 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(key, value){
   var i = getIndexBelowMaxForKey(key, this._limit);
-  var tuple = [key,value];
-  console.log(tuple);
-  // only problem is we weren creating buckets. so we need to create
-  // an index that refers to a BUCKET, which holds the tuples. right
-  // now our index is referring to the tuple. right idea, but not quite
-  // right.
-
-
-  // if (this._bucket[i]) {
-  //   this._bucket.push(tuple);
-  //   this._storage.set(i, this._bucket);
-  // }
-  // console.log('bucket after:', this._bucket);
-  // this._bucket.push(tuple);
-  this._storage.set(i, tuple);
+  var bucket = this._storage.get(i);
+  console.log(bucket);
+  if (bucket === undefined) {
+    this._storage.set(i, [[key,value]]);
+  } else if (_.contains(bucket, key)) {
+    _.each(bucket, function(tuple) {
+      if (tuple[0] === key) {
+        tuple[1] = value;
+      }
+    });
+  } else {
+    bucket.push([key,value]);
+  }
 };
 
 HashTable.prototype.retrieve = function(key){
   var i = getIndexBelowMaxForKey(key, this._limit);
-  var result = this._storage.get(i)[1];
-  console.log(result)
-  this._storage.get(i)[0];
-  if (this._storage.get(i)[0] === key) {
-    return result;
-  }
+  var bucket = this._storage.get(i);
+  var result;
+  _.each(bucket, function(tuple) {
+    if (tuple[0] === key) {
+      result = tuple[1];
+    }
+  });
+  return result;
 };
 
 HashTable.prototype.remove = function(key){
-// console.log("inside remove", key);
   var i = getIndexBelowMaxForKey(key, this._limit);
-  if (this._storage.get(i)[0] === key) {
-    this._storage.get(i)[1] = null;
-  }
+  var bucket = this._storage.get(i);
+  _.each(bucket, function(tuple) {
+    if (tuple[0] === key) {
+      tuple[1] = null;
+    }
+  });
 };
 
 
